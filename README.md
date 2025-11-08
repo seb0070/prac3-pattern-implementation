@@ -1,24 +1,43 @@
-# prac3-pattern-implementation
+# 🎬 prac3-pattern-implementation  
+> Vue + TypeScript로 구현한 디자인 패턴 실습 과제 (영화관 예매 시스템)
 
-## Project setup
-```
-npm install
-```
+---
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+## 🧾 프로젝트 개요
+이 프로젝트는 Vue 3 + TypeScript를 사용하여  
+**Builder**, **Facade**, **Strategy** 세 가지 디자인 패턴을  
+“영화 예매 시스템” 시나리오로 구현한 과제입니다.
 
-### Compiles and minifies for production
-```
-npm run build
-```
+| 패턴 | 역할 | 설명 |
+|------|------|------|
+| **Builder** | 티켓 생성 | 영화관, 영화, 시간, 좌석, 인원, 스낵 등을 단계적으로 설정해 `MovieTicket` 객체 생성 |
+| **Facade** | 예매 절차 단순화 | 좌석 선택, 가격 계산, 예매 확정의 과정을 하나의 메서드로 통합 |
+| **Strategy** | 결제 전략 | 결제 방식을 카드, 간편결제, 무통장입금 등으로 자유롭게 교체 가능 |
 
-### Lints and fixes files
-```
-npm run lint
-```
+## 패턴별 설명
+### 1. Builder Pattern — 티켓 생성
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+복잡한 티켓 정보를 단계별로 설정해 MovieTicket 객체를 구성
+
+[Builder Pattern] 실행 시작
+🎟️ [Builder] 티켓 생성 완료
+MovieTicket { theater: 'CGV 전주고사', movie: '체인소맨: 레제편', ... }
+
+### 2. Facade Pattern — 예매 절차 단순화
+
+좌석 선택 → 요금 계산 → 예매 확정의 복잡한 과정을 하나의 인터페이스로 단순화
+
+[Facade Pattern] 실행 시작
+💺 좌석 G8, G9 선택 완료
+🍿 스낵(나쵸 콤보) 추가: +11,000원
+💵 총 결제 금액: 41,000원
+✅ 예매 확정: [CGV 강남] 체인소맨: 레제편 2025-11-08 19:30 / 좌석 G8, G9 / 41,000원
+
+### 3. Strategy Pattern — 결제 전략
+
+실행 중에도 결제 방식을 자유롭게 변경할 수 있는 구조
+
+[Strategy Pattern] 결제 실행 예시
+🎬 영화: 체인소맨: 레제편 @ CGV 강남
+💰 결제 금액: 41,000원
+📱 간편결제로 41,000원 결제 완료
